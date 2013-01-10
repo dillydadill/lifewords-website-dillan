@@ -1,22 +1,3 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       Cake.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,80 +16,35 @@
 	?>
 </head>
 <body>
-
-    <div id="dashboard" align="center">
-    	<div id="dashbox" align="left">
-        	<div class="iconbox" align="center">
-            
-            	<?php echo $this->Html->link(
-					$this->Html->image(
-						'profile.png',
-						array('border'=>'0','width'=>'40', 'height'=>'40')
-					),
-					array('action' => 'index'),
-					array('escape' => false)
-				); ?>
-            
-            </div>
-            <div class="iconbox" align="center">
-            	
-				<?php echo $this->Html->link(
-					$this->Html->image(
-						'buddies.png',
-						array('border'=>'0','width'=>'40', 'height'=>'40')
-					),
-					array('action' => 'index'),
-					array('escape' => false)
-				); ?>
-                
-            </div>
-            <div class="iconbox" align="center">
-            	
-				<?php echo $this->Html->link(
-					$this->Html->image(
-						'home.png',
-						array('border'=>'0','width'=>'40', 'height'=>'40')
-					),
-					array('action' => 'index'),
-					array('escape' => false)
-				); ?>
-                
-            </div>
-            <div class="iconbox" align="center">
-            	
-				<?php echo $this->Html->link(
-					$this->Html->image(
-						'settings.png',
-						array('border'=>'0','width'=>'40', 'height'=>'40')
-					),
-					array('action' => 'index'),
-					array('escape' => false)
-				); ?>
-                
-            </div>
-            <div class="iconbox" align="center">
-            	
-				<?php echo $this->Html->link(
-					$this->Html->image(
-						'logout.png',
-						array('border'=>'0','width'=>'40', 'height'=>'40')
-					),
-					array('controller' => 'users', 'action' => 'logout'),
-					array('escape' => false)
-				); ?>
-                
-            </div>
+<div id="wrap">
+    <div id="dashboard">
+	    <div id="logo">
+    		LifeWords
         </div>
+            
+		<div id="navpanel">
+            <?php echo $this->Html->link('Home', array('action' => 'profile', 'controller' => 'users')) ?> | <?php echo $this->Html->link('Shared Cards', array('action' => 'share', 'controller' => 'users')) ?> | <?php echo $this->Html->link('Settings', array('action' => 'settings', $user['User']['User_ID'], 'controller' => 'users')) ?> | <?php echo $this->Form->postLink('Logout', array('action' => 'logout', 'controller' => 'users'), null, 'Are you sure you want to log out?') ?>
+        </div>
+        
+        <div id="namebar">
+        		Hi <?php echo $nickname; ?>!
+        </div>        
+        
+        <div id="imagebar">
+        	<?php echo $this->Html->image('logosmall.png', array('height'=>'50'))?>
+        </div>
+    
     </div>
     
-    <div align="center">
-    	<div id="container">
-    		<div id="content" align="center">
-				<?php echo $this->Session->flash(); ?>
-        		<?php echo $this->fetch('content'); ?>
-    		</div>
-    	</div>
+
+    	<div id="content">
+        	<?php echo $this->fetch('content'); ?>
+    	</div>    
+	<div id="floater"></div>
+    
+    <div id="footer" align="center">
+		© Copyright 2012, Simpledudes. All Rights Reserved.
     </div>
-        
+</div>  
 </body>
 </html>

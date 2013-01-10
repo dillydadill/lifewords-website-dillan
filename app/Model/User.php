@@ -1,6 +1,5 @@
 <?php
 App::uses('AppModel', 'Model');
-//App::uses('AuthComponent', 'Controller/Component');
 
 /**
  * User Model
@@ -21,6 +20,16 @@ class User extends AppModel {
  * @var string
  */
 	public $primaryKey = 'User_ID';
+
+/**
+ * Model Association links
+ */
+ 	public $hasMany = array(
+		'Sharing' => array(
+			'className' => 'Sharing',
+			'foreignKey' => 'User_Email'
+		)
+	);
 	
 /**
  * Basic Validation for User attributes
@@ -50,13 +59,6 @@ class User extends AppModel {
 			)
         ),
 		
-		'User_Password_Confirmation' => array(
-			'Not empty' => array(
-			'rule' => 'notEmpty',
-			'message' => 'Please confirm your password'
-			)
-		),
-		
 		'User_Nickname' => array(
 			'Not empty' => array(
 			'rule' => 'notEmpty',
@@ -64,9 +66,12 @@ class User extends AppModel {
 			)
 		)
     );
-	
+
+/**
+ * matchPasswords function for password confirmation
+ */
 	public function matchPasswords($data) {
-		if ($data['User_Password'] ==$this->data['User']['User_Password_Confirmation']){
+		if ($data['User_Password'] == $this->data['User']['User_Password_Confirmation']){
 		return true;	
 		}
 		$this->invalidate('User_Password_Confirmation', 'Your passwords do not match');

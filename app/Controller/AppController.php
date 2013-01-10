@@ -33,6 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
+	//IsAuthorized function, allows the user with the ID 1 to be able to navigate onto any view
 	public function isAuthorized($user) {
     	if (isset($user['User_ID']) && $user['User_ID'] === '1') {
         	return true;
@@ -40,10 +41,11 @@ class AppController extends Controller {
 		return false;
 	}
 
+	//BeforeFilter function, disallows the users to acces to any method without inheritance
     public function beforeFilter() {
-//        $this->Auth->allow('index');
 	}
 	
+	//Creating session components and authentication
 	public $components = array(
     	'Session',
     	'Auth' => array(

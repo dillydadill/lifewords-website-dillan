@@ -1,4 +1,8 @@
 <?php
+/**
+ * Setting Database configuration file.
+ */
+
 class DATABASE_CONFIG {
 
 	public $default = array(
@@ -6,7 +10,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => '',
+		'password' => 'sarath',
 		'database' => 'lifewords',
 	);
 }

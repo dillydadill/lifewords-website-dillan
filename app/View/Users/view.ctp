@@ -16,14 +16,19 @@
 			<?php echo h($user['User']['User_Password']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User Profile Photo'); ?></dt>
+		<dt><?php echo __('User Status'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['User_Profile_Photo']); ?>
+			<?php echo h($user['User']['User_Status']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('User Nickname'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['User_Nickname']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('User Profile Photo'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['User_Profile_Photo']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -34,6 +39,5 @@
 		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['User_ID'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['User_ID']), null, __('Are you sure you want to delete # %s?', $user['User']['User_ID'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
